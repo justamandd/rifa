@@ -29,11 +29,14 @@ document.querySelectorAll('.ticket').forEach(ticket => {
 
 let continue_button = document.querySelector('.continue_icon')
 
+let header = document.querySelector('.header_content')
+let main_section = document.querySelector('#ticket_section')
+let footer = document.querySelector('.footer_content')
+let modal = document.querySelector('.modal')
+
+let cart_tickets = document.querySelector('.cart_tickets')
+
 continue_button.addEventListener('click', () => {
-    let header = document.querySelector('.header_content')
-    let main_section = document.querySelector('#ticket_section')
-    let footer = document.querySelector('.footer_content')
-    let modal = document.querySelector('.modal')
 
     header.classList.add('disabled')
     main_section.classList.add('disabled')
@@ -43,11 +46,29 @@ continue_button.addEventListener('click', () => {
 
     modal.classList.add('active')
 
-    let cart_tickets = document.querySelector('.cart_tickets')
     casas_selecionadas.forEach(fruit_selected => {
         let ticket = document.createElement('div')
         ticket.classList.add('cart_ticket')
         ticket.innerHTML = fruit_selected
         cart_tickets.appendChild(ticket)
     })
+})
+
+let return_button = document.querySelector('.return_icon')
+
+return_button.addEventListener('click', () => {
+
+    document.querySelectorAll('.cart_ticket').forEach(ticket => {
+        cart_tickets.removeChild(ticket)
+    })
+
+
+    header.classList.add('active')
+    main_section.classList.add('active')
+    footer.classList.add('active')
+    header.classList.remove('disabled')
+    main_section.classList.remove('disabled')
+    footer.classList.remove('disabled')
+
+    modal.classList.add('disabled')
 })
