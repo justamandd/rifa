@@ -3,7 +3,7 @@ let frutas = ['Abacate','Abacaxi','Açaí','Acerola','Amora','Araticum','Bacaba'
 function create_tickets () {
     let ticket_container = document.querySelector('.tickets')
     for (let i = 0; i < 50; i++){
-        let ticket = document.createElement('div')
+        let ticket = document.createElement('li') //LI
         ticket.classList.add('ticket')
         ticket.innerHTML = frutas[i]
         ticket_container.appendChild(ticket)
@@ -16,7 +16,7 @@ let casas_selecionadas = []
 
 // Adiciona a interação de selecionar ticket e adicionar ao carrinho
 document.querySelectorAll('.ticket').forEach(ticket => {
-    ticket.addEventListener('click', event => {
+    ticket.addEventListener('click', () => {
         if (ticket.classList.contains('ticket_selected')){
             ticket.classList.remove('ticket_selected')
             casas_selecionadas.splice(casas_selecionadas.indexOf(ticket.innerHTML),1)
